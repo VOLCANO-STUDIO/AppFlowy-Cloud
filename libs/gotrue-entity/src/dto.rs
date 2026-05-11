@@ -156,6 +156,8 @@ pub enum AuthProvider {
   Twitch,
   Twitter,
   Zoom,
+  Saml,
+  Oidc,
 }
 
 impl AuthProvider {
@@ -182,6 +184,8 @@ impl AuthProvider {
       AuthProvider::Email => "email",
       AuthProvider::Phone => "phone",
       AuthProvider::Zoom => "zoom",
+      AuthProvider::Saml => "saml",
+      AuthProvider::Oidc => "oidc",
     }
   }
 }
@@ -210,6 +214,9 @@ impl AuthProvider {
       "email" => Some(AuthProvider::Email),
       "phone" => Some(AuthProvider::Phone),
       "zoom" => Some(AuthProvider::Zoom),
+      "saml" => Some(AuthProvider::Saml),
+      "sso" => Some(AuthProvider::Oidc),
+      "oidc" => Some(AuthProvider::Oidc),
       _ => None,
     }
   }
