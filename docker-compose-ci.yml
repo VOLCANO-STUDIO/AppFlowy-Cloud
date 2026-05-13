@@ -61,7 +61,7 @@ services:
 
   gotrue:
     restart: on-failure
-    image: appflowyinc/gotrue:${GOTRUE_VERSION:-latest}
+    image: ${GOTRUE_IMAGE:-appflowyinc/gotrue}:${GOTRUE_VERSION:-latest}
     depends_on:
       postgres:
         condition: service_healthy
@@ -163,7 +163,7 @@ services:
         PROFILE: ci
     networks:
       - shared_network
-    image: appflowyinc/appflowy_cloud:${APPFLOWY_CLOUD_VERSION:-latest}
+    image: ${APPFLOWY_CLOUD_IMAGE:-appflowyinc/appflowy_cloud}:${APPFLOWY_CLOUD_VERSION:-latest}
     depends_on:
       gotrue:
         condition: service_healthy
@@ -175,7 +175,7 @@ services:
     build:
       context: .
       dockerfile: ./admin_frontend/Dockerfile
-    image: appflowyinc/admin_frontend:${APPFLOWY_ADMIN_FRONTEND_VERSION:-latest}
+    image: ${APPFLOWY_ADMIN_FRONTEND_IMAGE:-appflowyinc/admin_frontend}:${APPFLOWY_ADMIN_FRONTEND_VERSION:-latest}
     ports:
       - 3000:3000
     environment:
@@ -215,7 +215,7 @@ services:
 
   appflowy_worker:
     restart: on-failure
-    image: appflowyinc/appflowy_worker:${APPFLOWY_WORKER_VERSION:-latest}
+    image: ${APPFLOWY_WORKER_IMAGE:-appflowyinc/appflowy_worker}:${APPFLOWY_WORKER_VERSION:-latest}
     build:
       context: .
       dockerfile: ./services/appflowy-worker/Dockerfile

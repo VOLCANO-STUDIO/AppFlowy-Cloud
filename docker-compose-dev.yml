@@ -36,7 +36,7 @@ services:
 
   gotrue:
     restart: on-failure
-    image: appflowyinc/gotrue:${GOTRUE_VERSION:-latest}
+    image: ${GOTRUE_IMAGE:-appflowyinc/gotrue}:${GOTRUE_VERSION:-latest}
     depends_on:
       postgres:
         condition: service_healthy
