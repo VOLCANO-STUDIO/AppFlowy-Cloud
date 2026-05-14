@@ -178,6 +178,7 @@ define_auth_provider! {
 
         // OAuth providers
         Apple = "apple",
+        Authentik = "authentik",
         Azure = "azure",
         Bitbucket = "bitbucket",
         Discord = "discord",
